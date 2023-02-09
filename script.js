@@ -4,7 +4,7 @@ var numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var lowCaseArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 var specCharArr = ['!', '@', '#', '$', '%', '^', '&', '*', '/', '-', '+', '(', ')', '[', ']', '{', '}', '<', '>', '?', '~']
 var charGeneratorArr = []
- console.log(charGeneratorArr)
+//  console.log(charGeneratorArr)
 
 
 
@@ -49,39 +49,37 @@ function specCharacters(){
 
 function generatePassword(){
    passwordLength = getLength()
-   numChoice = getNumChoices()
-   upChoice= upCase()
-   lowChoice = lowCase()
-   specChoice = specCharacters()
+  
+   
    var numConfirmation = confirm('Include Number in Password?')
    if ( numConfirmation === true){
-    charGeneratorArr.push(numChoice)
-   } else {
-    return null
-   };
+    charGeneratorArr.push(getNumChoices)
+   } 
    var upConfirmation = confirm('include upper case letter?')
    if (upConfirmation === true){
-    charGeneratorArr.push(upChoice)
-   } else {
-    return null;
-   }
+    charGeneratorArr.push(upCase)
+   } 
    var lowConfirmation = confirm('include lower case letters?')
    if (lowConfirmation === true){
-    charGeneratorArr.push(lowChoice);
-   } else {
-     return null;
-   }
+    charGeneratorArr.push(lowCase);
+   } 
    var specConfirmation = confirm('include special characters?')
    if (specConfirmation === true){
-    charGeneratorArr.push(specChoice)
-   } else {
-    
+    charGeneratorArr.push(specCharacters)
+   } 
+   
+   var result= ""
+   for( let i = 0; i < passwordLength; i++){
+    randomPassword = Math.floor(Math.random() * charGeneratorArr.length)
+    PasswordChoice = charGeneratorArr[randomPassword]()
+    console.log(PasswordChoice)
+    result += PasswordChoice
    }
-  
+   
 
 
   //generate it somehow
-  return password
+  return result
 }
 
 // Get references to the #generate element
