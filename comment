@@ -8,3 +8,11 @@
     //under what conditions should wer return a character Base?
     //can we return ir if it's empty?
     //Hint it, we shouldn't return an empty character Base 
+
+     var numChoice =  confirm( 'include Numbers?');
+    if (numChoice === true) {
+      console.log(numArr[randomNum])
+      return numArr[randomNum];
+    }
+    // console.log("It's Invalid")
+    return null;
