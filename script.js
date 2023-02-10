@@ -3,7 +3,7 @@ var upCaseArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 var numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var lowCaseArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 var specCharArr = ['!', '@', '#', '$', '%', '^', '&', '*', '/', '-', '+', '(', ')', '[', ']', '{', '}', '<', '>', '?', '~']
-var charGeneratorArr = []
+var charactorTypeArr = []
 //  console.log(charGeneratorArr)
 
 
@@ -48,35 +48,40 @@ function specCharacters(){
 }
 
 function generatePassword(){
+  charactorTypeArr.length = 0
    passwordLength = getLength()
   
    
    var numConfirmation = confirm('Include Number in Password?')
    if ( numConfirmation === true){
-    charGeneratorArr.push(getNumChoices)
-   } 
+    charactorTypeArr.push(getNumChoices)
+   } else if (numConfirmation === false){
+    
+   }
    var upConfirmation = confirm('include upper case letter?')
    if (upConfirmation === true){
-    charGeneratorArr.push(upCase)
-   } 
+    charactorTypeArr.push(upCase)
+   } else if (upConfirmation === false){
+    
+   }
    var lowConfirmation = confirm('include lower case letters?')
    if (lowConfirmation === true){
-    charGeneratorArr.push(lowCase);
-   } 
+    charactorTypeArr.push(lowCase);
+   } else if (lowConfirmation === false){}
    var specConfirmation = confirm('include special characters?')
    if (specConfirmation === true){
-    charGeneratorArr.push(specCharacters)
-   } 
+    charactorTypeArr.push(specCharacters)
+   } else if ( specConfirmation === false){}
    
    var result= ""
    for( let i = 0; i < passwordLength; i++){
-    randomPassword = Math.floor(Math.random() * charGeneratorArr.length)
-    PasswordChoice = charGeneratorArr[randomPassword]()
-    console.log(PasswordChoice)
-    result += PasswordChoice
+    randomPassword = Math.floor(Math.random() * charactorTypeArr.length)
+    characterType = charactorTypeArr[randomPassword]()
+    // console.log(PasswordChoice)
+    result += characterType
    }
    
-
+// console.log(PasswordChoice)
 
   //generate it somehow
   return result
