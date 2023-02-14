@@ -29,6 +29,10 @@ N/A
  ## Image
  
  ![Screenshot_20230213_110321](https://user-images.githubusercontent.com/121896793/218636378-b6ccb242-b5c9-4988-88af-5e6032400c6b.png)
+ 
+ ## Link 
+ 
+ https://moxufo.github.io/Generation-Rando-/
 
 
 
