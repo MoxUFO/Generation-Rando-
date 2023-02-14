@@ -9,7 +9,7 @@ var charactorTypeArr = []
 
 
 
-
+// this function prompts user to choose desired password length. this number is then returned to be used later in the for loop
 function getLength(){
   var passwordLength = prompt("What's the desired number of characters between 8-128 as an integer")
   if(passwordLength >= 8 && passwordLength <= 128){
@@ -18,7 +18,7 @@ function getLength(){
   console.log("It's invalid")
   return getLength()
 }
-
+// code line 22-48 are functions that irerates over the specified array to chooses a random chacracter from that array.
 function getNumChoices(){
   var randomNum = Math.floor(Math.random() * numArr.length);
   var numChoice = numArr[randomNum];
@@ -51,19 +51,16 @@ function generatePassword(){
   charactorTypeArr.length = 0
    passwordLength = getLength()
   
-   
+   //code lines 55- 70 create a series of confirmaton promts that determines if user wants specified character type in their password.
+   //each confirmed choice then pushes the corresponding functrion into an empty array on line 6
    var numConfirmation = confirm('Include Number in Password?')
    if ( numConfirmation === true){
     charactorTypeArr.push(getNumChoices)
-   } else if (numConfirmation === false){
-    
-   }
+   } else if (numConfirmation === false){}
    var upConfirmation = confirm('include upper case letter?')
    if (upConfirmation === true){
     charactorTypeArr.push(upCase)
-   } else if (upConfirmation === false){
-    
-   }
+   } else if (upConfirmation === false){}
    var lowConfirmation = confirm('include lower case letters?')
    if (lowConfirmation === true){
     charactorTypeArr.push(lowCase);
@@ -73,6 +70,9 @@ function generatePassword(){
     charactorTypeArr.push(specCharacters)
    } else if ( specConfirmation === false){}
    
+   // the following for loop takes the previusly  empty array of line 6 and irerates over the functions the were add via the confirmation prompts
+   // each iteration, calls the a chartacter type function  randomly which then produces a random character from that array via the character type fnction.
+   //each selection is then added to an empty string, the string is now the randomly choosen password
    var result= ""
    for( let i = 0; i < passwordLength; i++){
     randomPassword = Math.floor(Math.random() * charactorTypeArr.length)
